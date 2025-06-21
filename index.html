@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academic Time Table Manager</title>
+  <style>
+    :root {
+      --primary: #4b6cb7;
+      --secondary: #182848;
+      --accent: #ffd700;
+      --background: #f4f7fa;
+      --light: #ffffff;
+      --dark: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--background);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: var(--light);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--light);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: slideUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: slideUp 1s ease-out 0.3s both;
+    }
+
+    .cta-button {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      background: #ffe564;
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+
+    .motto-box {
+      background: #fff8e1;
+      border-left: 8px solid var(--accent);
+      padding: 2rem;
+      margin: auto;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-style: italic;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .motto-box:hover {
+      transform: scale(1.02);
+    }
+
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .service {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 5px solid var(--primary);
+    }
+
+    .service:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-box {
+      background: linear-gradient(to right, #e6ecf3, #ffffff);
+      border-left: 6px solid var(--secondary);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .highlight-box ul {
+      margin-top: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    .highlight-box ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-form {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #5e7cd8;
+    }
+
+    .support-box {
+      background: #e3f2fd;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .support-box:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      background: var(--secondary);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Academic Time Table Manager</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>AI-Powered Time Table Scheduling</h1>
+    <p>Accurate. Efficient. Smart. Let AI handle the academic chaos while you focus on success.</p>
+    <a href="https://claude.ai/public/artifacts/ade63c13-b6e6-4c17-8972-2935f2d2d8e2?fullscreen=true" class="cta-button">Get Started</a>
+  </section>
+
+  <section id="motto">
+    <h2 class="section-title">Our Motto</h2>
+    <div class="motto-box">
+      “Time is the most valuable resource in education. We optimize it intelligently through automation and smart scheduling.”
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="grid services-grid">
+      <div class="service">
+        <h3>AI Scheduling Engine</h3>
+        <p>Generate conflict-free schedules using cutting-edge AI algorithms and smart learning.</p>
+      </div>
+      <div class="service">
+        <h3>Student Timetable</h3>
+        <p>Customized real-time updates for each student across departments and sections.</p>
+      </div>
+      <div class="service">
+        <h3>Faculty & Room Management</h3>
+        <p>Balanced workload allocation and classroom optimization using data-driven predictions.</p>
+      </div>
+      <div class="service">
+        <h3>Smart Alerts</h3>
+        <p>Instant alerts for changes, notifications for holidays, events, and exam clashes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="highlight-box">
+      <p>We’re not just another scheduler — we’re your digital academic assistant. Powered by machine learning, our tool simplifies the complex and delivers clarity.</p>
+      <ul>
+        <li>✔ Adaptive AI engine for all academic levels</li>
+        <li>✔ Predicts and prevents conflicts</li>
+        <li>✔ Works across colleges, schools & universities</li>
+        <li>✔ Cloud-based, scalable & secure</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="support">
+    <h2 class="section-title">Support</h2>
+    <div class="support-box">
+      <p>Need help? Our team is available 24/7 to support your institution's transition to smarter scheduling.</p>
+      <ul>
+        <li>📧 Email: support@academictimetable.com</li>
+        <li>📞 Phone: +91-9875764057 | +91-9166126059</li>
+        <li>📍 Office: Kota,Rajasthan</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Academic Time Table Manager<br> Design By Arav-Arnav</p>
+  </footer>
+
+</body>
+</html>
